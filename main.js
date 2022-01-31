@@ -1,29 +1,43 @@
 function createGrid(difficultyValue){
 
-    const grid= document.getElementById('grid');    
+    const grid= document.getElementById('grid');
+
 
     for( let i = 1; i<= difficultyValue; i++){
-        
+
         //creo div
         let square = document.createElement('div');
         square.classList.add('square');
 
         if(difficultyValue == 100){
             square.classList.add('sq-easy');
-            // gridEasyHtml.classList.remove('d-none');
+
+            
+            // Inietto div nel DOM e gestisco visibilità
+            grid.appendChild(square);
+            grid.classList.remove('d-none');
+            
+
+
         } else if(difficultyValue == 81){
             square.classList.add('sq-medium');
-            // gridMediumHtml.classList.remove('d-none');
+
+            // Inietto div nel DOM e gestisco visibilità
+            grid.appendChild(square);
+            grid.classList.remove('d-none');
+            
+
         } else {
             square.classList.add('sq-hard');
-            // gridHardHtml.classList.remove('d-none');
-        }                        
+
+            // Inietto div nel DOM e gestisco visibilità
+            grid.appendChild(square);
+            grid.classList.remove('d-none');
+            
+        }
+
 
         square.innerHTML += `${i}`;
-
-
-        // Inietto div nel DOM
-        grid.appendChild(square);
 
         // Imposto click del node
         square.addEventListener('click',
@@ -31,13 +45,25 @@ function createGrid(difficultyValue){
             function(){
                 this.classList.add('clicked');
             }
-        
+
         );
-    }        
-    
+    }
+
 
 }
 
+// Distrugge la griglia precedente
+function destroyGrid(){
+
+    // Selezione e creo array di tutti gli square
+    let squares = document.querySelectorAll('.square');
+    console.log(squares)
+
+    // ciclo l'array e elimino gli square
+    for (let i = 0; i< squares.length; i++){
+        squares[i].remove();
+    }
+}    
 
 
 
@@ -48,17 +74,21 @@ play.addEventListener('click',
 
     function(){
 
+
         // Mi riferisco a TAG selection nel DOM
-        const difficultyValue = document.getElementById('difficulty-select').value;
+        difficultyValue = document.getElementById('difficulty-select').value;
+
+        //Distruggo griglia precedente
+        destroyGrid();
 
         // Mi riferisco a schermata di benvenuto
         const welcome = document.getElementById('welcome');
         welcome.classList.add('d-none');
 
-        createGrid(difficultyValue);   
-        grid.classList.remove('d-none');     
-        
-                
+        //Creo griglia
+        createGrid(difficultyValue);
+
+
     }
 
 );

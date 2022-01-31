@@ -67,7 +67,7 @@ main{
     clear: both;
 }
 
-#grid{
+#grid, #grid2, #grid3{
     height: 500px;
 }
 
