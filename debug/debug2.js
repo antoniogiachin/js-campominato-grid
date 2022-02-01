@@ -40,7 +40,8 @@ function createGrid(value){
     // Svuoto grid
     gridHtml.innerHTML ='';
 
-    const bombe = createBombArray(1, value);
+    const bombe = createBombArray(16, value);
+    console.log(bombe);
 
     // Ciclo for e creo squares a seconda del value inserito
     for(let i = 1; i <= value; i++){
@@ -92,8 +93,7 @@ play.addEventListener('click',
 
         createGrid(difficultyValue);
 
-        const bombe = createBombArray(16, difficultyValue);
-        console.log(bombe);
+        
 
 
     }
