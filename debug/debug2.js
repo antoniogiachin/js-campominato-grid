@@ -27,17 +27,9 @@ function createBombArray(bombNumber, maxValue){
 
 
     console.log(bombArray);
+    return bombArray;
 }
 
-//funzione gestione click square
-function handleClick(){
-
-    this.classList.add('clicked');
-    this.removeEventListener('click', handleClick);
-
-    console.log(this.innerText)
-
-}
 
 // Funzione che crea grid
 function createGrid(value){
@@ -48,6 +40,8 @@ function createGrid(value){
     // Svuoto grid
     gridHtml.innerHTML ='';
 
+    const bombe = createBombArray(1, value);
+
     // Ciclo for e creo squares a seconda del value inserito
     for(let i = 1; i <= value; i++){
 
@@ -56,6 +50,19 @@ function createGrid(value){
         square.classList.add('square');
 
         square.innerText = i;
+
+        //funzione gestione click square
+        function handleClick(){
+
+            this.classList.add('clicked');
+            this.removeEventListener('click', handleClick);
+
+            console.log(this.innerText);
+
+            if(bombe.includes(parseInt(this.innerText))){
+                alert('perso');
+            }
+        }
 
         square.addEventListener('click', handleClick);
 
@@ -85,7 +92,8 @@ play.addEventListener('click',
 
         createGrid(difficultyValue);
 
-        createBombArray(16, difficultyValue);
+        const bombe = createBombArray(16, difficultyValue);
+        console.log(bombe);
 
 
     }
