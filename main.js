@@ -1,4 +1,6 @@
-function createGrid(difficultyValue){
+ /* ---- FUNZIONI ----- */
+        
+ function createGrid(difficultyValue){
 
     const grid= document.getElementById('grid');
 
@@ -65,49 +67,39 @@ function destroyGrid(){
     }
 }    
 
+
 // funzione numero casuale tra 1 e numero-celle
-let difficultyValue=100
+
 function randomNumberBomb (difficultyValue){
 
     return Math.floor(Math.random() * difficultyValue + 1 );
 
 }
 
+function arrayBomb (){
 
-const bombArray=[];
-let i =0
-while(i < 16){
+    const bombArray=[];
+
+    let i =0
+    while(i < 16){
 
 
-    let prova= randomNumberBomb(100);
-    console.log(prova);
+        let bomba= randomNumberBomb(difficultyValue);
+        console.log(bomba);
 
-    // Evito ripetizione numero
-    if(!bombArray.includes(prova)){
-        bombArray.push(prova);
-        i++
+        // Evito ripetizione numero
+        if(!bombArray.includes(bomba)){
+            bombArray.push(bomba);
+            i++
+        }
+
     }
+    console.log(bombArray);
+
 
 }
-console.log(bombArray);
 
 
-// // Funzione che crea le bombe
-// function bombCreation(){
-
-//     // Le bombe sono sempre 16
-//     const BOMB_NUMBER =16;
-//     const bombArray=[];
-
-//     for(let i = 1; i <= 16; i++){
-//         randomNumberBomb();
-//         bombArray.push(randomNumberBomb);
-        
-//     }
-
-//     return bombArray;
-
-// }
 
 
 
@@ -133,7 +125,11 @@ play.addEventListener('click',
         //Creo griglia
         createGrid(difficultyValue);
 
+        arrayBomb();
+       
 
     }
+
+    
 
 );
