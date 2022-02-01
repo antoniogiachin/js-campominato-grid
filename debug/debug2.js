@@ -25,10 +25,19 @@ function createBombArray(bombNumber, maxValue){
 
     }
 
+
     console.log(bombArray);
 }
 
+//funzione gestione click square
+function handleClick(){
 
+    this.classList.add('clicked');
+    this.removeEventListener('click', handleClick);
+
+    console.log(this.innerText)
+
+}
 
 // Funzione che crea grid
 function createGrid(value){
@@ -48,7 +57,7 @@ function createGrid(value){
 
         square.innerText = i;
 
-        // square.addEventListener aggiungi dopo direttamente funzione
+        square.addEventListener('click', handleClick);
 
         // dimensione a seconda di value
         if(value == 100){
