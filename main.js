@@ -96,6 +96,8 @@ function arrayBomb (){
     }
     console.log(bombArray);
 
+    return bombArray;
+
 
 }
 
@@ -125,7 +127,6 @@ play.addEventListener('click',
         //Creo griglia
         createGrid(difficultyValue);
 
-        arrayBomb();
        
 
     }
