@@ -65,6 +65,51 @@ function destroyGrid(){
     }
 }    
 
+// funzione numero casuale tra 1 e numero-celle
+let difficultyValue=100
+function randomNumberBomb (difficultyValue){
+
+    return Math.floor(Math.random() * difficultyValue + 1 );
+
+}
+
+
+const bombArray=[];
+let i =0
+while(i < 16){
+
+
+    let prova= randomNumberBomb(100);
+    console.log(prova);
+
+    // Evito ripetizione numero
+    if(!bombArray.includes(prova)){
+        bombArray.push(prova);
+        i++
+    }
+
+}
+console.log(bombArray);
+
+
+// // Funzione che crea le bombe
+// function bombCreation(){
+
+//     // Le bombe sono sempre 16
+//     const BOMB_NUMBER =16;
+//     const bombArray=[];
+
+//     for(let i = 1; i <= 16; i++){
+//         randomNumberBomb();
+//         bombArray.push(randomNumberBomb);
+        
+//     }
+
+//     return bombArray;
+
+// }
+
+
 
 
 // Mi riferisco a TAG  button nel DOM
