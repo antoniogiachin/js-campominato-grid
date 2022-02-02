@@ -25,11 +25,18 @@ function createBombArray(bombNumber, maxValue){
 
     }
 
-
     console.log(bombArray);
     return bombArray;
 }
 
+// Blocco click finale
+function endGameLost(valore){
+    const allSquares = document.getElementsByClassName('square');
+    for(let i = 0; i < allSquares.length; i++){
+        // allSquares[i].removeEventListener('click', valore); -- Non so perchè non mi funziona
+        allSquares[i].classList.add('remove-click');
+    }
+}
 
 // Funzione che crea grid
 function createGrid(value){
@@ -37,9 +44,13 @@ function createGrid(value){
     // Mi riferisco a div #grid
     const gridHtml = document.getElementById('grid');
 
+    // Array tentativi
+    const tentativi =[];
+
     // Svuoto grid
     gridHtml.innerHTML ='';
 
+    // Creo le bombe
     const bombe = createBombArray(16, value);
     console.log(bombe);
 
@@ -55,14 +66,20 @@ function createGrid(value){
         //funzione gestione click square
         function handleClick(){
 
-            this.classList.add('clicked');
             this.removeEventListener('click', handleClick);
 
             console.log(this.innerText);
-
+            
+            // Verifico presenza bombe
             if(bombe.includes(parseInt(this.innerText))){
-                alert('perso');
+                alert('BOOOMBAAAA!!!');
+                this.classList.add('clicked-bomb');
+                endGameLost(handleClick);
+            } else {
+                tentativi.push(this.innerText);
+                this.classList.add('clicked');
             }
+            console.log(tentativi);
         }
 
         square.addEventListener('click', handleClick);
@@ -79,7 +96,7 @@ function createGrid(value){
         gridHtml.appendChild(square);
     }
 
-
+    
 }
 
 

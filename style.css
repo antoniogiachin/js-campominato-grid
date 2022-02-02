@@ -100,3 +100,11 @@ main{
 .clicked{
     background-color: #6395ED;
 }
+
+.clicked-bomb{
+    background-color: #f00;
+}
+
+.remove-click{
+    pointer-events: none;
+}
