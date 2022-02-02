@@ -94,7 +94,13 @@ function createGrid(value){
         }
 
         gridHtml.appendChild(square);
+
     }
+
+    // Faccio scomparire messaggio benvunuto e compare griglia
+    const welcomeHtml = document.getElementById('welcome');
+    welcomeHtml.classList.add('d-none');
+    gridHtml.classList.remove('d-none');
 
     
 }
